@@ -1,0 +1,9 @@
+Host default
+  HostName 127.0.0.1
+  User vagrant
+  Port 2222
+  PasswordAuthentication no
+  IdentityFile /Users/mtojek/Workspace/go/src/github.com/mtojek/go-keylogger/.vagrant/machines/default/virtualbox/private_key
+  IdentitiesOnly yes
+  LogLevel FATAL
+
