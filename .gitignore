@@ -13,3 +13,6 @@
 
 # Vagrant
 .vagrant
+
+# idea
+.idea
