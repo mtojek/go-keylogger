@@ -14,4 +14,4 @@ test: build
 	# keylogger record
 	keylogger record --help
 
-pre-push: clean-code build test
+release: clean-code build test
