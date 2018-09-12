@@ -1,8 +1,6 @@
 package command
 
 import (
-	"strings"
-
 	"github.com/mitchellh/cli"
 )
 
@@ -14,7 +12,7 @@ type RecordCommand struct {
 var _ cli.Command = &RecordCommand{}
 
 func (c *RecordCommand) Help() string {
-	helpText := `
+	return `
 Usage: keylogger record [options]
 
   ` + c.Synopsis() + `.
@@ -23,7 +21,6 @@ Options:
   -device=event0                   Device name.
   -log-path="/tmp/keylogger.log"   Path to the log file with key hits.
 `
-	return strings.TrimSpace(helpText)
 }
 
 func (c *RecordCommand) Run(args []string) int {

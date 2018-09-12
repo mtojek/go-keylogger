@@ -1,8 +1,6 @@
 package command
 
 import (
-	"strings"
-
 	"github.com/mitchellh/cli"
 )
 
@@ -13,12 +11,11 @@ type DevicesCommand struct {
 var _ cli.Command = &DevicesCommand{}
 
 func (c *DevicesCommand) Help() string {
-	helpText := `
-Usage: keylogger devices [options]
+	return `
+Usage: keylogger devices
 
   ` + c.Synopsis() + `.
 `
-	return strings.TrimSpace(helpText)
 }
 
 func (c *DevicesCommand) Run(args []string) int {

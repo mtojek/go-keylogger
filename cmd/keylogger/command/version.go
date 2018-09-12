@@ -2,7 +2,6 @@ package command
 
 import (
 	"fmt"
-
 	"github.com/mitchellh/cli"
 )
 
@@ -14,7 +13,11 @@ type VersionCommand struct {
 var _ cli.Command = &VersionCommand{}
 
 func (c *VersionCommand) Help() string {
-	return ""
+	return `
+Usage: keylogger version
+
+  ` + c.Synopsis() + `.
+`
 }
 
 func (c *VersionCommand) Run(args []string) int {

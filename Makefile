@@ -8,7 +8,10 @@ clean-code:
 test: build
 	go get -t ./...
 	keylogger version
+	keylogger version --help
 	keylogger devices
+	keylogger devices --help
 	# keylogger record
+	keylogger record --help
 
 pre-push: clean-code build test
