@@ -1,17 +1,20 @@
-build:
-	go get -v github.com/mtojek/go-keylogger/cmd/keylogger
+build: clean-code install test
 
 clean-code:
 	goimports -w .
-	golint ./... && test -z "$$?"
+	golint -set_exit_status ./...
 
-test: build
+install:
+	go get -v github.com/mtojek/go-keylogger/cmd/keylogger
+
+test: install
 	go get -t ./...
-	keylogger version
+	keylogger || test -n "$$?"
 	keylogger version --help
-	keylogger devices
 	keylogger devices --help
-	# keylogger record
 	keylogger record --help
 
-release: clean-code build test
+vagrant-deploy:
+	GOOS=linux GOARCH=amd64 go build -v github.com/mtojek/go-keylogger/cmd/keylogger
+	vagrant scp keylogger :/home/vagrant
+	rm keylogger
