@@ -17,18 +17,18 @@ func init() {
 	Commands = map[string]cli.CommandFactory{
 		"devices": func() (cli.Command, error) {
 			return &command.DevicesCommand{
-				Ui: ui,
+				UI: ui,
 			}, nil
 		},
 		"record": func() (cli.Command, error) {
 			return &command.RecordCommand{
 				ShutdownCh: makeShutdownCh(),
-				Ui:         ui,
+				UI:         ui,
 			}, nil
 		},
 		"version": func() (cli.Command, error) {
 			return &command.VersionCommand{
-				Ui:      ui,
+				UI:      ui,
 				Version: Version,
 			}, nil
 		},
