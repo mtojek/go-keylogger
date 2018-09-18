@@ -1,6 +1,8 @@
 package command
 
 import (
+	"flag"
+
 	"github.com/mitchellh/cli"
 )
 
@@ -20,13 +22,25 @@ Usage: keylogger record [options]
   ` + c.Synopsis() + `.
 
 Options:
-  -device=event0                   Device name.
-  -log-path="/tmp/keylogger.log"   Path to the log file with key hits.
+  -eventPath=event0                Event device path.
+  -logPath="/tmp/keylogger.log"    Path to the log file with key hits.
 `
 }
 
 // Run method executes the command.
 func (c *RecordCommand) Run(args []string) int {
+	var eventPath string
+	var logPath string
+
+	cmdFlags := flag.NewFlagSet("record", flag.ExitOnError)
+	cmdFlags.StringVar(&eventPath, "eventPath", "event0", "Event device path")
+	cmdFlags.StringVar(&logPath, "logPath", "/tmp/keylogger.log", "Path to the log file with key hits")
+	err := cmdFlags.Parse(args)
+	if err != nil {
+		c.UI.Error(err.Error())
+		return 1
+	}
+
 	return 0
 }
 
