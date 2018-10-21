@@ -3,6 +3,8 @@ package command
 import (
 	"flag"
 
+	"github.com/mtojek/go-keylogger"
+
 	"github.com/mitchellh/cli"
 )
 
@@ -22,7 +24,7 @@ Usage: keylogger record [options]
   ` + c.Synopsis() + `.
 
 Options:
-  -eventPath=event0                Event device path.
+  -eventPath=/dev/input/event0     Event device path.
   -logPath="/tmp/keylogger.log"    Path to the log file with key hits.
 `
 }
@@ -33,7 +35,7 @@ func (c *RecordCommand) Run(args []string) int {
 	var logPath string
 
 	cmdFlags := flag.NewFlagSet("record", flag.ExitOnError)
-	cmdFlags.StringVar(&eventPath, "eventPath", "event0", "Event device path")
+	cmdFlags.StringVar(&eventPath, "eventPath", "/dev/input/event0", "Event device path")
 	cmdFlags.StringVar(&logPath, "logPath", "/tmp/keylogger.log", "Path to the log file with key hits")
 	err := cmdFlags.Parse(args)
 	if err != nil {
@@ -41,6 +43,16 @@ func (c *RecordCommand) Run(args []string) int {
 		return 1
 	}
 
+	c.UI.Output("Start recording...")
+
+	var kr keylogger.KeyRecorder
+	err = kr.Record(&keylogger.RecorderOptions{ShutdownCh: c.ShutdownCh, Logger: c.UI, EventPath: eventPath, LogPath: logPath})
+	if err != nil {
+		c.UI.Error(err.Error())
+		return 1
+	}
+
+	c.UI.Output("Done.")
 	return 0
 }
 
