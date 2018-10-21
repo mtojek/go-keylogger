@@ -2,7 +2,7 @@ build: clean-code install test
 
 clean-code:
 	go get golang.org/x/tools/cmd/goimports && goimports -w .
-	go get github.com/golang/lint/golint && golint -set_exit_status ./...
+	go get golang.org/x/lint/golint && golint -set_exit_status ./...
 
 install:
 	go get -v github.com/mtojek/go-keylogger/cmd/keylogger
