@@ -52,9 +52,13 @@ func (kr *KeyRecorder) Record(options *RecorderOptions) error {
 	root := new(Root)
 	err := root.Ensure()
 	if err != nil {
-		return errors.Wrap(err, "can't start recording")
+		return errors.Wrap(err, "insufficient permissions")
 	}
 
+	return kr.doRecording(options)
+}
+
+func (kr *KeyRecorder) doRecording(options *RecorderOptions) error {
 	// Open event device
 	eventDevice, err := os.Open(options.EventPath)
 	if err != nil {

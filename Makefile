@@ -9,6 +9,7 @@ install:
 
 test: install
 	go get -t ./...
+	go test -v ./...
 	keylogger || test -n "$$?"
 	keylogger version --help
 	keylogger devices --help
