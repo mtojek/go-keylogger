@@ -5,7 +5,7 @@ Keylogger written in Go
 
 Status: **Done**
 
-Record keystrokes in the Linux environment. Keylogger listen for input events on selected input device and stores decoded hits in a specified log file. The application requires root permissions.
+Record keystrokes in Linux environment. Keylogger listen for input events on selected input device and stores decoded hits in a specified log file. The application requires root permissions.
 
 ## Features
 
