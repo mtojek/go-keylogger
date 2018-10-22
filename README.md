@@ -7,6 +7,10 @@ Status: **Done**
 
 Record keystrokes in Linux environment. Keylogger listens for input events on selected input device and stores decoded hits in a specified log file. **The application requires root permissions**.
 
+## Live
+
+<img src="https://github.com/mtojek/go-keylogger/blob/master/screenshot-1.png" alt="Screenshot Desktop" width="872px" />
+
 ## Features
 
 * List available input devices
