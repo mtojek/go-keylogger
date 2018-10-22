@@ -13,6 +13,12 @@ Record keystrokes in Linux environment. Keylogger listens for input events on se
 * Record keystrokes sent to observed input devices (e.g. keyboards)
 * Collect logged input data in log files
 
+## Installation
+
+~~~
+$ go get github.com/mtojek/go-keylogger/cmd/keylogger
+~~~
+
 ## Usage
 
 ~~~
