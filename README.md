@@ -56,7 +56,7 @@ Start recording input events:
 Start recording...
 ~~~
 
-You can see ```/tmp/keylogger.log``` content:
+See recorded keystrokes in the log file```/tmp/keylogger.log```:
 
 ~~~
 # cat /tmp/keylogger.log 
